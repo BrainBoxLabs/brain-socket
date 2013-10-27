@@ -45,22 +45,11 @@ class BrainSocket extends Command {
 			new WsServer(
 				new BrainSocketEventListener(new BrainSocketResponse())
 			)
-			, 8080
+			, $this->option('port')
 		);
 
 		$server->run();
-	}
-
-	/**
-	 * Get the console command arguments.
-	 *
-	 * @return array
-	 */
-	protected function getArguments()
-	{
-		return array(
-			/*array('example', InputArgument::REQUIRED, 'An example argument.'),*/
-		);
+		$this->info('WebSocket server started successfully!');
 	}
 
 	/**
@@ -71,7 +60,7 @@ class BrainSocket extends Command {
 	protected function getOptions()
 	{
 		return array(
-			/*array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),*/
+			array('port', null, InputOption::VALUE_OPTIONAL, 'The port you want the websocket server to run on (default: 8080)','8080'),
 		);
 	}
 
