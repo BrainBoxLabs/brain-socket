@@ -48,8 +48,8 @@ class BrainSocket extends Command {
 			, $this->option('port')
 		);
 
+		$this->info('WebSocket server started on port:'.$this->option('port'));
 		$server->run();
-		$this->info('WebSocket server started successfully!');
 	}
 
 	/**
