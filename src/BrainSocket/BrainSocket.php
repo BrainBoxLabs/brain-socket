@@ -3,6 +3,7 @@ namespace BrainSocket;
 
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
+use Ratchet\Http\HttpServer;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -42,8 +43,10 @@ class BrainSocket extends Command {
 	{
 
 		$server = IoServer::factory(
-			new WsServer(
-				new BrainSocketEventListener(new BrainSocketResponse())
+			new HttpServer(
+				new WsServer(
+					new BrainSocketEventListener(new BrainSocketResponse())
+				)
 			)
 			, $this->option('port')
 		);
