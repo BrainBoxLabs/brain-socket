@@ -21,7 +21,7 @@ class BrainSocket extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Ratchet Websocket Server command to get you up and running with WebSockets and Laravel.';
+	protected $description = 'Starts BrainSocket and the Ratchet WebSocket server to start running event-driven apps with Laravel.';
 
 	/**
 	 * Create a new command instance.
