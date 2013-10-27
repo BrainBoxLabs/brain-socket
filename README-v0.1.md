@@ -86,6 +86,8 @@ Event::listen('app.error',function($client_data){
 });
 ```
 
+**Note:** The `$client_data` parameter passed into the event listener is a generic stdClass object with all of the data passed from the client side.
+
 **Note:** The `app.success` and `app.error` events are not required but are helper events for dealing with flash messaging.
 
 Now in `app/start/global.php` add the following line at the end of the file:
