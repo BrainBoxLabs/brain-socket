@@ -4,10 +4,9 @@ BrainSocket.php
 WebSockets for realtime event-driven laravel apps.
 
 This Laravel 4 package provides an Artisan command to setup and run a WebSocket server
-with [Ratchet](http://socketo.me/) and the [Laravel Events](http://laravel.com/docs/events) packages.
+with [Ratchet](http://socketo.me/) inside of a Laravel app.
 
-Lets begin by installing this package through Composer. Edit your Laravel project's `composer.json` file and require `bainboxlabs/brain-socket`
-composer:
+Lets begin by installing this package through Composer. Edit your Laravel project's `composer.json` file and add the require `bainboxlabs/brain-socket`:
 
 ```json
 	"require": {
@@ -19,26 +18,47 @@ composer:
 
 **Note:** make sure and check [packagist.org](https://packagist.org) for updated dependencies but the list above is what has been tested at the time of this writing.
 
-Once the package and all of the dependencies have been installed we need to add the `BrainSocket\BrainSocketServiceProvider` to our `app/config/app.php` file.
+Once the package and all of the dependencies have been installed we need to add the **BrainSocketServiceProvider** to our `app/config/app.php` file.
 
-Add this line `'BrainSocket\BrainSocketServiceProvider'` to the end of the providers array.
+Add this line:
 
-There is also an optional but recommended Facade you should add to the `aliases` array in the `app/config/app.php` file. `'BrainSocket'     => 'BrainSocket\BrainSocketFacade',`
+```php
+'providers' => array(
+	...
+	'BrainSocket\BrainSocketServiceProvider'
+```
 
-Open `terminal` and `cd` into your laravel project directory.
+to the end of the providers array in the config file.
 
-run `php artisan list` and confirm you see the `brain socket` command in the list of commands. It should look like this:
-```json
+There is also an optional but recommended Facade you should add to the `aliases` array in the `app/config/app.php` file.
+
+```php
+'aliases' => array(
+	...
+	'BrainSocket'     => 'BrainSocket\BrainSocketFacade',
+```
+
+Next open `terminal` and `cd` into your laravel project directory.
+
+run `php artisan list` and confirm you see the `brainsocket:` command in the list of commands. It should look like this:
+
+```php
 Available commands:
 brainsocket
 	brainsocket:start
 ```
 
 Once you have confirmed the list run the following command to start the WebSocket server:
-`php artisan brainsocket:start`
+
+```php
+php artisan brainsocket:start
+```
 
 **Note:** The websocket server runs on port 8080 by default. You can change this with the optional **--port=port_number** on the end of the artisan command.
-`php artisan brainsocket:start --port=8081`
+
+```php
+php artisan brainsocket:start --port=8081
+```
 
 At this point you should see a message in terminal saying the websocket started on the selected port. Terminal will be locked down / unusable at this point, to stop the WebSocket server
 hit `ctrl+c` in terminal.
@@ -69,7 +89,9 @@ Event::listen('app.error',function($client_data){
 **Note:** The `app.success` and `app.error` events are not required but are helper events for dealing with flash messaging.
 
 Now in `app/start/global.php` add the following line at the end of the file:
+
 ```php
+require app_path().'/filters.php';
 require app_path().'/events.php';
 ```
 
