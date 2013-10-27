@@ -1,5 +1,5 @@
 <?php
-namespace BrainboxLabs\BrainSocket;
+namespace BrainSocket;
 
 use Illuminate\Support\ServiceProvider;
 

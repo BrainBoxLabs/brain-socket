@@ -1,5 +1,5 @@
 <?php
-namespace BrainboxLabs\BrainSocket;
+namespace BrainSocket;
 
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
