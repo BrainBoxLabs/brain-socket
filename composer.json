@@ -1,0 +1,25 @@
+{
+	"name": "bainboxlabs/brain-socket",
+	"type": "library",
+	"description": "Websockets for event-driven Laravel apps.",
+	"keywords": ["websockets","laravel","events","ratchet","artisan"],
+	"homepage": "https://github.com/BrainBoxLabs/brain-socket",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Brain Box Labs",
+			"email": "andrew@brainboxmedia.ca",
+			"homepage": "http://www.brainboxmedia.ca/",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0",
+		"cboden/Ratchet": "0.3.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"BrainSocket": "src"
+		}
+	}
+}
