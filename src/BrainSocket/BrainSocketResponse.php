@@ -41,14 +41,14 @@ class BrainSocketResponse implements BrainSocketResponseInterface{
 	protected function fireEvent($obj,$msg){
 		$e = null;
 
-		if(!isset($obj->event)){
-			$obj->event = $msg;
+		if(!isset($obj->client->event)){
+			$obj->client->event = $msg;
 		}
 
-		$e = Event::fire($obj->event,array($obj),true);
+		$e = Event::fire($obj->client->event,array($obj->client),true);
 
 		if(!is_null($e)){
-			$obj = $e;
+			$obj->server = $e;
 		}
 
 		return $obj;
