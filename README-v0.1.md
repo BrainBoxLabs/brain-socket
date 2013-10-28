@@ -10,8 +10,7 @@ Lets begin by installing this package through Composer. Edit your Laravel projec
 
 ```json
 	"require": {
-		"laravel/framework": "4.0.*",
-		"cboden/Ratchet": "0.3.*",
+		...
 		"bainboxlabs/brain-socket": "dev-master"
 	},
 ```
@@ -86,7 +85,7 @@ Event::listen('app.error',function($client_data){
 });
 ```
 
-**Note:** The `$client_data` parameter passed into the event listener is a generic stdClass object with all of the data passed from the client side.
+**Note:** The `$client_data` parameter passed into the event listener is a POPO (Plain Old PHP Object) with all of the data passed from the client side.
 
 **Note:** The `app.success` and `app.error` events are not required but are helper events for dealing with flash messaging.
 
