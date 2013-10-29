@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Event;
 
 class BrainSocketResponse implements BrainSocketResponseInterface{
 
+	protected $eventPublisher;
+
+	public function __construct(EventPublisherInterface $eventPublisher){
+		$this->eventPublisher = $eventPublisher;
+	}
+
 	/**
 	 * Takes the client message and tries to broadcast it
 	 * through laravel (in case our app is listening for it).
@@ -18,6 +24,7 @@ class BrainSocketResponse implements BrainSocketResponseInterface{
 
 		if(!$json){
 			$json = (object)array();
+			$json->client = (object)array();
 		}else{
 			$json = (object)$json;
 		}
@@ -45,7 +52,7 @@ class BrainSocketResponse implements BrainSocketResponseInterface{
 			$obj->client->event = $msg;
 		}
 
-		$e = Event::fire($obj->client->event,array($obj->client),true);
+		$e = $this->eventPublisher->fire($obj->client->event,array($obj->client));
 
 		if(!is_null($e)){
 			$obj->server = $e;
