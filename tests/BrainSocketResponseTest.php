@@ -9,7 +9,7 @@ class BrainSocketResponseTest extends PHPUnit_Framework_TestCase{
 	}
 
 	protected function mockEventPublisher(){
-		$mock = Mockery::mock('BrainSocket\LaravelEventPublisher');
+		$mock = Mockery::mock('BrainSocket\EventPublisherInterface');
 		return $mock;
 	}
 
