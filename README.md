@@ -11,7 +11,7 @@ Lets begin by installing this package through Composer. Edit your Laravel projec
 ```json
 	"require": {
 		...
-		"bainboxlabs/brain-socket": "dev-master"
+		"brainboxlabs/brain-socket": "dev-master"
 	},
 ```
 
