@@ -1,6 +1,8 @@
 BrainSocket.php
 ============
 
+**NOTE:** BrainSocket is ideal for heavier front-end development (think single page javascript apps etc). We are currently working on integrating PUSH notifications into the next release.
+
 WebSockets for realtime event-driven Laravel apps.
 
 This Laravel 4 package provides an Artisan command to setup and run a WebSocket server
