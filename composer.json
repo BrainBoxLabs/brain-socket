@@ -18,8 +18,8 @@
 		"cboden/Ratchet": "0.3.*"
 	},
 	"require-dev":{
-		"phpunit/phpunit": "3.7.28",
-		"mockery/mockery": "0.8.0"
+		"phpunit/phpunit": "~4.0",
+		"mockery/mockery": "~0.9"
 	},
 	"autoload": {
 		"psr-0": {
