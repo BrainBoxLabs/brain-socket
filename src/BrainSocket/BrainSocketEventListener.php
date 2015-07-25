@@ -17,6 +17,10 @@ class BrainSocketEventListener implements MessageComponentInterface {
 	public function onOpen(ConnectionInterface $conn) {
 		echo "Connection Established! \n";
 		$this->clients->attach($conn);
+		
+		foreach ($this->clients as $client) {
++            		$client->send($this->response->make('someone_connected'));
++        	}
 	}
 
 	public function onMessage(ConnectionInterface $from, $msg) {
@@ -33,6 +37,14 @@ class BrainSocketEventListener implements MessageComponentInterface {
 	public function onClose(ConnectionInterface $conn) {
 		$this->clients->detach($conn);
 		echo "Connection {$conn->resourceId} has disconnected\n";
+		
++        	foreach ($this->clients as $client) {
++            		$client->send($this->response->make('someone_disconnected'));
++        	}
++
++        	$this->clients->detach($conn);
+ 			echo "Connection {$conn->resourceId} has disconnected\n";
+ 		}
 	}
 
 	public function onError(ConnectionInterface $conn, \Exception $e) {
