@@ -85,6 +85,14 @@ Event::listen('app.success',function($client_data){
 Event::listen('app.error',function($client_data){
 	return BrainSocket::error(array('There was a Laravel App Error!'));
 });
+
+Event::listen('someone_connected',function($client_data) {
+    return BrainSocket::message('someone_connected',array('Some user signed in right now!'));
+});
+
+Event::listen('someone_disconnected',function($client_data) {
+    return BrainSocket::message('someone_disconnected',array('Some user signed out right now!'));
+});
 ```
 
 **Note:** The `$client_data` parameter passed into the event listener is a POPO (Plain Old PHP Object) with all of the data passed from the client side.
