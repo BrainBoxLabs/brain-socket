@@ -30,11 +30,11 @@ class BrainSocketServiceProvider extends ServiceProvider {
 	public function register()
 	{
 
-		$this->app['brain_socket'] = $this->app->share(function($app){
+		$this->app->singleton('brain_socket', function($app){
 			return new BrainSocketAppResponse();
 		});
 
-		$this->app['command.brainsocket.start'] = $this->app->share(function($app)
+		$this->app->singleton('command.brainsocket.start', function($app)
 		{
 			return new BrainSocket();
 		});
